@@ -1,6 +1,6 @@
 # Project 2
 + By: Gerald Derrick
-+ Production URL: <http://p2.yourdomain.com>
++ Production URL: <http://p2.gaderrick.me>
 
 ## Outside resources
 *your list of outside resources go here*
