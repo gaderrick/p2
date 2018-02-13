@@ -1,4 +1,5 @@
 <?php
+require("myhelpers.php");
 require("helpers.php");
 require("scoring.php");
 ?>
@@ -16,7 +17,7 @@ require("scoring.php");
 </head>
 <body>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="padding-bottom: 5px">
         <div class="col-sm-3">
 
         </div>
@@ -27,16 +28,66 @@ require("scoring.php");
 
         </div>
     </div>
+    <div class="row" align="center">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6 formText">
+            This is where the scoring result will go
+        </div>
+        <div class="col-sm-3">
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-3">
-
         </div>
         <div class="col-sm-6 mainArea">
-
-            Blah blah blah
+            <form method="GET" action="index.php" name="main">
+                <div class="row" style="padding-top: 5px; padding-bottom: 15px">
+                    <div class="col-sm-6 formText" style="text-align: right">
+                        Word to score:
+                    </div>
+                    <div class="col-sm-6" style="align-content: left">
+                        <input type="text" name="userWord" style="width: 100%">
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom: 15px">
+                    <div class="col-sm-6 formText" style="text-align: right">
+                        Score Multiplier:<br>
+                        test
+                    </div>
+                    <div class="col-sm-6" style="align-content: left">
+                        <select name="multiplier">
+                            <option value="none">None</option>
+                            <option value="double">Double Word</option>
+                            <option value="triple">Triple Word</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom: 15px">
+                    <div class="col-sm-6 formText" style="text-align: right">
+                        Bingo! (+50 pts)?
+                    </div>
+                    <div class="col-sm-6" style="align-content: left">
+                        <input type="checkbox" name="bingo">
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom: 15px">
+                    <div class="col-sm-6 formText" style="text-align: right">
+                        Check word spelling?
+                    </div>
+                    <div class="col-sm-6" style="align-content: left">
+                        <input type="checkbox" name="spelling">
+                    </div>
+                </div>
+                <div class="row" style="padding-top:25px; padding-bottom: 15px">
+                    <div class="col-sm-12 formText" align="center">
+                        <input type="submit" value="Score the Word" class="btn">
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="col-sm-3">
 
+        <div class="col-sm-3">
         </div>
     </div>
 </div>
