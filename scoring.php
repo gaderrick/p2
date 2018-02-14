@@ -28,10 +28,26 @@ if ($checkSpelling && $wordToCheck <> "") {
     $apiResult = trim(curl_exec($ch));
     curl_close($ch);
 } else {
-    $apiResult="Not JSON";
+    $apiResult = "Not JSON";
 }
 
+$isRealWord = isJson($apiResult);
+
 // If the result was valid JSON, score the word
-if (isJson($apiResult)) {
-    print $apiResult . "\n\n";
+// Read the JSON file containing the default scores for letters into an array "$letters"
+$lettersJSON = file_get_contents("data/letters.json");
+$letters = json_decode($lettersJSON, true);
+
+// Loop over each letter in $wordToCheck and add up its score based on the values in $letters
+$wordScore = 0;
+
+for ($i = 0; $i < strlen($wordToCheck); $i++) {
+    $tempLetter = $wordToCheck[$i];
+    $wordScore = $wordScore + $letters[$tempLetter];
+    //print $wordToCheck[$i];
 }
+if ($isRealWord) {
+    print "Its a real word ->";
+}
+
+print "$wordScore points\n";
