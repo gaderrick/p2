@@ -1,23 +1,16 @@
 <?php
 // Set local variables for all the possible _GET variables
-if (isset($_GET["userWord"])) {
-    $wordToCheck = $_GET["userWord"];
-} else {
-    $wordToCheck = "";
-}
-
-if (isset($_GET["spelling"])) {
-    $checkSpelling = true;
-} else {
-    $checkSpelling = false;
-}
+$wordToCheck = (isset($_GET["userWord"]) ? $_GET["userWord"] : "");
+$spelling = (isset($_GET["spelling"]) ? true : false);
+$bingo = (isset($_GET["bingo"]) ? true : false);
+$multiplier = (isset($_GET["multiplier"]) ? $_GET["multiplier"] : "");
 
 // Read the JSON file containing the default scores for letters into an array "$letters"
 $lettersJSON = file_get_contents("data/letters.json");
 $letters = json_decode($lettersJSON, true);
 
 // If a spelling check was requested and the word to check is not blank look the word up
-if ($checkSpelling && $wordToCheck <> "") {
+if ($spelling && $wordToCheck <> "") {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "https://od-api.oxforddictionaries.com:443/api/v1/entries/en/" . $wordToCheck);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -33,7 +26,6 @@ if ($checkSpelling && $wordToCheck <> "") {
 
 $isRealWord = isJson($apiResult);
 
-// If the result was valid JSON, score the word
 // Read the JSON file containing the default scores for letters into an array "$letters"
 $lettersJSON = file_get_contents("data/letters.json");
 $letters = json_decode($lettersJSON, true);
@@ -44,8 +36,26 @@ $wordScore = 0;
 for ($i = 0; $i < strlen($wordToCheck); $i++) {
     $tempLetter = $wordToCheck[$i];
     $wordScore = $wordScore + $letters[$tempLetter];
-    //print $wordToCheck[$i];
 }
+
+// Apply the multiplier and bingo score modification
+if ($wordToCheck <> "") {
+    if ($multiplier <> "") {
+        switch ($multiplier) {
+            case "double":
+                $wordScore = $wordScore * 2;
+                break;
+            case "triple":
+                $wordScore = $wordScore * 3;
+                break;
+        }
+    }
+
+    if ($bingo) {
+        $wordScore = $wordScore + 50;
+    }
+}
+
 if ($isRealWord) {
     print "Its a real word ->";
 }
