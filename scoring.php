@@ -1,6 +1,6 @@
 <?php
 // Set local variables for all the possible _GET variables
-$wordToCheck = (isset($_GET["userWord"]) ? $_GET["userWord"] : "");
+$wordToCheck = strtolower((isset($_GET["userWord"]) ? $_GET["userWord"] : ""));
 $spelling = (isset($_GET["spelling"]) && $_GET["spelling"] == "on" ? true : false);
 $bingo = (isset($_GET["bingo"]) && $_GET["bingo"] == "on" ? true : false);
 $multiplier = (isset($_GET["multiplier"]) ? $_GET["multiplier"] : "");
