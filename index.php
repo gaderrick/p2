@@ -31,9 +31,36 @@ require("scoring.php");
     <div class="row" align="center">
         <div class="col-sm-3">
         </div>
-        <div class="col-sm-6 formText">
-            This is where the scoring result will go
-        </div>
+
+        <?php
+        if (isset($_GET["userWord"]) && ($displaySuccess)) { ?>
+            <div class="col-sm-6 formText messageArea" style="background-color: mediumseagreen">
+                <?php
+                for ($i = 0; $i < strlen($wordToCheck); $i++) {
+                    ?>
+                    <img src="images/<?= $wordToCheck[$i] ?>.png"
+                         alt="<?= $wordToCheck[$i] ?> | <?= $letters[$wordToCheck[$i]] ?>" id="responsive-image-small">
+                    <?php
+                }
+                ?>
+            </div>
+            <?php
+        } elseif (isset($_GET["userWord"]) && (!$displaySuccess)) {
+            ?>
+            <div align="center" class="col-sm-6 formText messageArea"
+                 style="background-color: crimson;line-height: 75px">
+                Sorry, <?= $wordToCheck ?> is not a valid word
+            </div>
+            <?php
+        } else { ?>
+            <div align="center" class="col-sm-6 formText messageArea"
+                 style="background-color:lightgoldenrodyellow; line-height: 75px">Enter a word below to
+                score
+            </div>
+            <?php
+        }
+        ?>
+
         <div class="col-sm-3">
         </div>
     </div>

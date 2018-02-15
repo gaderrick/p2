@@ -1,8 +1,8 @@
 <?php
 // Set local variables for all the possible _GET variables
 $wordToCheck = (isset($_GET["userWord"]) ? $_GET["userWord"] : "");
-$spelling = (isset($_GET["spelling"]) ? true : false);
-$bingo = (isset($_GET["bingo"]) ? true : false);
+$spelling = (isset($_GET["spelling"]) && $_GET["spelling"] == "on" ? true : false);
+$bingo = (isset($_GET["bingo"]) && $_GET["bingo"] == "on" ? true : false);
 $multiplier = (isset($_GET["multiplier"]) ? $_GET["multiplier"] : "");
 
 // Read the JSON file containing the default scores for letters into an array "$letters"
@@ -56,8 +56,8 @@ if ($wordToCheck <> "") {
     }
 }
 
-if ($isRealWord) {
-    print "Its a real word ->";
+if (($spelling && $isRealWord) || (!$spelling && $wordScore > 0)) {
+    $displaySuccess = true;
+} else {
+    $displaySuccess = false;
 }
-
-print "$wordScore points\n";
