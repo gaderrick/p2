@@ -21,14 +21,14 @@ require("scoring.php");
         <div class="col-sm-3">
 
         </div>
-        <div align="center" class="col-sm-6">
-            <img class="img-responsive title" src="images/scrabble_score.png">
+        <div class="col-sm-6">
+            <img class="img-responsive title" src="images/scrabble_score.png" alt="Scrabble Score Logo" id="logo">
         </div>
         <div class="col-sm-3">
 
         </div>
     </div>
-    <div class="row" align="center">
+    <div class="row">
         <div class="col-sm-3">
         </div>
 
@@ -47,13 +47,13 @@ require("scoring.php");
             <?php
         } elseif (isset($_GET["userWord"]) && (!$displaySuccess)) {
             ?>
-            <div align="center" class="col-sm-6 formText messageArea"
+            <div class="col-sm-6 formText messageArea"
                  style="background-color: crimson;line-height: 75px">
                 Sorry, <?= $wordToCheck ?> is not a valid word
             </div>
             <?php
         } else { ?>
-            <div align="center" class="col-sm-6 formText messageArea"
+            <div class="col-sm-6 formText messageArea"
                  style="background-color:lightgoldenrodyellow; line-height: 75px">Enter a word below to
                 score
             </div>
@@ -73,16 +73,15 @@ require("scoring.php");
                     <div class="col-sm-6 formText" style="text-align: right">
                         Word to score:
                     </div>
-                    <div class="col-sm-6" style="align-content: left">
+                    <div class="col-sm-6">
                         <input type="text" name="userWord" style="width: 100%">
                     </div>
                 </div>
                 <div class="row" style="padding-bottom: 15px">
                     <div class="col-sm-6 formText" style="text-align: right">
-                        Score Multiplier:<br>
-                        test
+                        Score Multiplier:
                     </div>
-                    <div class="col-sm-6" style="align-content: left">
+                    <div class="col-sm-6">
                         <select name="multiplier">
                             <option value="none">None</option>
                             <option value="double">Double Word</option>
@@ -94,7 +93,7 @@ require("scoring.php");
                     <div class="col-sm-6 formText" style="text-align: right">
                         Bingo! (+50 pts)?
                     </div>
-                    <div class="col-sm-6" style="align-content: left">
+                    <div class="col-sm-6">
                         <input type="checkbox" name="bingo">
                     </div>
                 </div>
@@ -102,12 +101,12 @@ require("scoring.php");
                     <div class="col-sm-6 formText" style="text-align: right">
                         Check word spelling?
                     </div>
-                    <div class="col-sm-6" style="align-content: left">
+                    <div class="col-sm-6">
                         <input type="checkbox" name="spelling">
                     </div>
                 </div>
                 <div class="row" style="padding-top:25px; padding-bottom: 15px">
-                    <div class="col-sm-12 formText" align="center">
+                    <div class="col-sm-12 formText centerContents">
                         <input type="submit" value="Score the Word" class="btn">
                     </div>
                 </div>
