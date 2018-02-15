@@ -18,56 +18,47 @@ require("scoring.php");
 <body>
 <div class="container-fluid">
     <div class="row" style="padding-bottom: 5px">
-        <div class="col-sm-3">
-
-        </div>
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <img class="img-responsive title" src="images/scrabble_score.png" alt="Scrabble Score Logo" id="logo">
-        </div>
-        <div class="col-sm-3">
-
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3">
-        </div>
-
         <?php
         if (isset($_GET["userWord"]) && ($displaySuccess)) { ?>
-            <div class="col-sm-6 formText messageArea" style="background-color: mediumseagreen">
+            <div class="col-sm-12 formText messageArea" style="background-color: mediumseagreen">
+                Your Word:<br>
                 <?php
                 for ($i = 0; $i < strlen($wordToCheck); $i++) {
                     ?>
                     <img src="images/<?= $wordToCheck[$i] ?>.png"
-                         alt="<?= $wordToCheck[$i] ?> | <?= $letters[$wordToCheck[$i]] ?>" id="responsive-image-small">
+                         alt="<?= $wordToCheck[$i] ?> | <?= $letters[$wordToCheck[$i]] ?>"
+                         class="responsive-image-small">
                     <?php
                 }
                 ?>
+                <br>
+                Scored <?= $wordScore ?> points with the following options:<br><br>
+
             </div>
             <?php
         } elseif (isset($_GET["userWord"]) && (!$displaySuccess)) {
             ?>
-            <div class="col-sm-6 formText messageArea"
+            <div class="col-sm-12 formText messageArea"
                  style="background-color: crimson;line-height: 75px">
                 Sorry, <?= $wordToCheck ?> is not a valid word
             </div>
             <?php
         } else { ?>
-            <div class="col-sm-6 formText messageArea"
+            <div class="col-sm-12 formText messageArea"
                  style="background-color:lightgoldenrodyellow; line-height: 75px">Enter a word below to
                 score
             </div>
             <?php
         }
         ?>
-
-        <div class="col-sm-3">
-        </div>
     </div>
     <div class="row">
-        <div class="col-sm-3">
-        </div>
-        <div class="col-sm-6 mainArea">
+        <div class="col-sm-12 mainArea">
             <form method="GET" action="index.php" name="main">
                 <div class="row" style="padding-top: 5px; padding-bottom: 15px">
                     <div class="col-sm-6 formText" style="text-align: right">
@@ -111,9 +102,6 @@ require("scoring.php");
                     </div>
                 </div>
             </form>
-        </div>
-
-        <div class="col-sm-3">
         </div>
     </div>
 </div>
