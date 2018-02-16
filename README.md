@@ -14,7 +14,6 @@
 + [W3C Validator] (https://validator.w3.org/)
 
 ## Code style divergences
-+ I prefer to use tabs instead of spaces when I code
 
 ## Notes for instructor
 *any notes for me to refer to while grading; if none, omit this section*

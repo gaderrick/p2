@@ -56,6 +56,7 @@ if ($wordToCheck <> "") {
     }
 }
 
+$displaySuccess = false;
 if (($spelling && $isRealWord) || (!$spelling && $wordScore > 0)) {
     $displaySuccess = true;
 } else {

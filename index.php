@@ -62,18 +62,18 @@ require("scoring.php");
             <form method="GET" action="index.php" name="main">
                 <div class="row" style="padding-top: 5px; padding-bottom: 15px">
                     <div class="col-sm-6 formText" style="text-align: right">
-                        Word to score:
+                        <label for="userWord">Word to score:</label>
                     </div>
                     <div class="col-sm-6">
-                        <input type="text" name="userWord" style="width: 100%">
+                        <input type="text" name="userWord" style="width: 100%" id="userWord">
                     </div>
                 </div>
                 <div class="row" style="padding-bottom: 15px">
                     <div class="col-sm-6 formText" style="text-align: right">
-                        Score Multiplier:
+                        <label for="multiplier">Score Multiplier:</label>
                     </div>
                     <div class="col-sm-6">
-                        <select name="multiplier">
+                        <select name="multiplier" id="multiplier">
                             <option value="none">None</option>
                             <option value="double">Double Word</option>
                             <option value="triple">Triple Word</option>
@@ -82,18 +82,18 @@ require("scoring.php");
                 </div>
                 <div class="row" style="padding-bottom: 15px">
                     <div class="col-sm-6 formText" style="text-align: right">
-                        Bingo! (+50 pts)?
+                        <label for="bingo">Bingo! (+50 pts)?</label>
                     </div>
                     <div class="col-sm-6">
-                        <input type="checkbox" name="bingo">
+                        <input type="checkbox" name="bingo" id="bingo">
                     </div>
                 </div>
                 <div class="row" style="padding-bottom: 15px">
                     <div class="col-sm-6 formText" style="text-align: right">
-                        Check word spelling?
+                        <label for="spelling">Check word spelling?</label>
                     </div>
                     <div class="col-sm-6">
-                        <input type="checkbox" name="spelling">
+                        <input type="checkbox" name="spelling" id="spelling">
                     </div>
                 </div>
                 <div class="row" style="padding-top:25px; padding-bottom: 15px">
