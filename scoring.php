@@ -1,9 +1,14 @@
 <?php
-// Set local variables for all the possible _GET variables
-$wordToCheck = strtolower((isset($_GET['userWord']) ? $_GET['userWord'] : ''));
-$spelling = (isset($_GET['spelling']) && $_GET['spelling'] == 'on' ? true : false);
-$bingo = (isset($_GET['bingo']) && $_GET['bingo'] == 'on' ? true : false);
-$multiplier = (isset($_GET['multiplier']) ? $_GET['multiplier'] : '');
+
+$form = new DWA\Form($_GET);
+
+// Set local variables from the submitted forms _GET values
+$wordToCheck = strtolower($form->get('userWord', ''));
+$spelling = $form->get('spelling', 'off');
+$spelling = ($spelling == 'on' ? true : false);
+$bingo = $form->get('bingo', 'off');
+$bingo = ($bingo == 'on' ? true : false);
+$multiplier = $form->get('multiplier', '');
 
 // Read the JSON file containing the default scores for letters into an array '$letters'
 $lettersJSON = file_get_contents('data/letters.json');

@@ -12,6 +12,8 @@
 + [Check if string is JSON] (https://stackoverflow.com/questions/6041741/fastest-way-to-check-if-a-string-is-json-in-php)
 + [Oxford Dictionary API] (https://od-api.oxforddictionaries.com/api/v1)
 + [W3C Validator] (https://validator.w3.org/)
++ [Bingo Starter Image] (https://www.onlinewebfonts.com/icon/562572)
++ [Spell Check Images] (http://blog.epicbrowser.com/2014/05/spell-check-private-working-in-epic/)
 
 ## Code style divergences
 

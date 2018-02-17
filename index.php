@@ -1,6 +1,7 @@
 <?php
 require('myhelpers.php');
 require('helpers.php');
+require('Form.php');
 require('scoring.php');
 ?>
 
@@ -37,6 +38,12 @@ require('scoring.php');
                     <img class='img-responsive' src='images/double.png' alt='2x Word Score' id='double'>
                 <?php elseif ($multiplier == 'triple'): ?>
                     <img class='img-responsive' src='images/triple.png' alt='3x Word Score' id='triple'>
+                <?php endif ?>
+                <?php if ($bingo): ?>
+                    <img class='img-responsive' src='images/bingo.png' alt='Bingo! (Image adapted from http://www.onlinewebfonts.com/icon starter image)' id='bingo'>
+                <?php endif ?>
+                <?php if ($spelling): ?>
+                    <img class='img-responsive' src='images/spell.png' alt='Spell Check (its a real word)' id='spell'>
                 <?php endif ?>
             </div>
         <?php elseif (isset($_GET['userWord']) && (!$displaySuccess)): ?>
