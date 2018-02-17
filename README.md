@@ -18,4 +18,10 @@
 ## Code style divergences
 
 ## Notes for instructor
-*any notes for me to refer to while grading; if none, omit this section*
++ Included an option for the user to do a dictionary lookup on a word
++ Added the following function to the Form class to check for max string length
+```php
+protected function maxlength($value, $parameter)
+{
+    return strlen($value) <= $parameter;
+}

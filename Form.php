@@ -1,4 +1,5 @@
 <?php
+
 namespace DWA;
 
 class Form
@@ -166,6 +167,7 @@ class Form
             'email' => ' is not a valid email address.',
             'min' => ' has to be greater than ' . $parameter . '.',
             'max' => ' has to be less than ' . $parameter . '.',
+            'maxlength' => ' has to be less than '.$parameter.' characters in length.',
         ];
 
         # If a message for the rule was found, use that, otherwise default to " has an error"
@@ -249,5 +251,16 @@ class Form
     protected function max($value, $parameter)
     {
         return floatval($value) < floatval($parameter);
+    }
+
+    /**
+     * Returns value if the given value is LESS THAN (non-inclusive) the given parameter
+     * @param $value
+     * @param $parameter
+     * @return bool
+     */
+    protected function maxlength($value, $parameter)
+    {
+        return strlen($value) <= $parameter;
     }
 }

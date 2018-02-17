@@ -40,7 +40,8 @@ require('scoring.php');
                     <img class='img-responsive' src='images/triple.png' alt='3x Word Score' id='triple'>
                 <?php endif ?>
                 <?php if ($bingo): ?>
-                    <img class='img-responsive' src='images/bingo.png' alt='Bingo! (Image adapted from http://www.onlinewebfonts.com/icon starter image)' id='bingo'>
+                    <img class='img-responsive' src='images/bingo.png'
+                         alt='Bingo! (Image adapted from http://www.onlinewebfonts.com/icon starter image)' id='bingo'>
                 <?php endif ?>
                 <?php if ($spelling): ?>
                     <img class='img-responsive' src='images/spell.png' alt='Spell Check (its a real word)' id='spell'>
@@ -48,8 +49,14 @@ require('scoring.php');
             </div>
         <?php elseif (isset($_GET['userWord']) && (!$displaySuccess)): ?>
             <div class='col-sm-12 formText messageArea alert alert-danger'
-                 style='line-height: 75px'>
-                Sorry, <?= ($wordToCheck <> '' ? $wordToCheck : 'a blank') ?> is not a valid word
+                 style='line-height: 50px'>
+                <?php if ($form->hasErrors) : ?>
+                    <?php foreach ($errors as $error) : ?>
+                        <li><?= $error ?></li>
+                    <?php endforeach ?>
+                <?php else: ?>
+                    Sorry, <?= ($wordToCheck <> '' ? $wordToCheck : 'a blank') ?> is not a valid word<br>
+                <?php endif ?>
             </div>
         <?php else: ?>
             <div class='col-sm-12 formText messageArea alert alert-info'
@@ -65,7 +72,8 @@ require('scoring.php');
                         <label for='userWord'>Word to score:</label>
                     </div>
                     <div class='col-sm-6'>
-                        <input type='text' name='userWord' style='width: 100%' id='userWord'>
+                        <input type='text' name='userWord' style='width: 100%' id='userWord'
+                               value='<?= sanitize($form->prefill("userWord")) ?>'>
                     </div>
                 </div>
                 <div class='row' style='padding-bottom: 15px'>
