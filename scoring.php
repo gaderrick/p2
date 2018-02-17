@@ -1,6 +1,6 @@
 <?php
 
-$form = new DWA\Form($_GET);
+$form = new Derrick\MyForm($_GET);
 
 // Set local variables from the submitted forms _GET values
 $wordToCheck = strtolower($form->get('userWord', ''));

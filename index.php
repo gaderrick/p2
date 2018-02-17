@@ -2,6 +2,7 @@
 require('myhelpers.php');
 require('helpers.php');
 require('Form.php');
+require('MyForm.php');
 require('scoring.php');
 ?>
 
