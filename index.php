@@ -23,39 +23,33 @@ require("scoring.php");
         </div>
     </div>
     <div class="row">
-        <?php
-        if (isset($_GET["userWord"]) && ($displaySuccess)) { ?>
+        <?php if (isset($_GET["userWord"]) && ($displaySuccess)): ?>
             <div class="col-sm-12 formText messageArea" style="background-color: mediumseagreen">
                 Your Word:<br>
-                <?php
-                for ($i = 0; $i < strlen($wordToCheck); $i++) {
-                    ?>
+                <?php for ($i = 0; $i < strlen($wordToCheck); $i++): ?>
                     <img src="images/<?= $wordToCheck[$i] ?>.png"
                          alt="<?= $wordToCheck[$i] ?> | <?= $letters[$wordToCheck[$i]] ?>"
                          class="responsive-image-small">
-                    <?php
-                }
-                ?>
+                <?php endfor ?>
                 <br>
                 Scored <?= $wordScore ?> points with the following options:<br><br>
-
+                <?php if ($multiplier == "double"): ?>
+                    <img class="img-responsive" src="images/double.png" alt="2x Word Score" id="double">
+                <?php elseif ($multiplier == "triple"): ?>
+                    <img class="img-responsive" src="images/triple.png" alt="3x Word Score" id="triple">
+                <?php endif ?>
             </div>
-            <?php
-        } elseif (isset($_GET["userWord"]) && (!$displaySuccess)) {
-            ?>
+        <?php elseif (isset($_GET["userWord"]) && (!$displaySuccess)): ?>
             <div class="col-sm-12 formText messageArea"
                  style="background-color: crimson;line-height: 75px">
-                Sorry, <?= $wordToCheck ?> is not a valid word
+                Sorry, <?= ($wordToCheck <> "" ? $wordToCheck : "a blank") ?> is not a valid word
             </div>
-            <?php
-        } else { ?>
+        <?php else: ?>
             <div class="col-sm-12 formText messageArea"
                  style="background-color:lightgoldenrodyellow; line-height: 75px">Enter a word below to
                 score
             </div>
-            <?php
-        }
-        ?>
+        <?php endif ?>
     </div>
     <div class="row">
         <div class="col-sm-12 mainArea">
