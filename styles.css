@@ -22,18 +22,9 @@ div.formText {
 }
 
 .responsive-image-small {
-    width: 8%;
+    width: 4%;
     height: auto;
     max-width: 70px;
-}
-
-#logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: auto;
-    max-width: 550px;
 }
 
 .alignRight {
@@ -43,4 +34,13 @@ div.formText {
 .centerContents {
     display: flex;
     justify-content: center;
+}
+
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+    max-width: 550px;
 }

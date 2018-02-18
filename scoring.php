@@ -1,8 +1,9 @@
 <?php
 
+// Load additional Form class functionality
 $form = new Derrick\MyForm($_GET);
 
-// Set local variables from the submitted forms _GET values
+// Set local variables from the submitted forms _GET values and initialize variables
 $wordToCheck = strtolower($form->get('userWord', ''));
 $spelling = $form->get('spelling', 'off');
 $spelling = ($spelling == 'on' ? true : false);
@@ -10,10 +11,13 @@ $bingo = $form->get('bingo', 'off');
 $bingo = ($bingo == 'on' ? true : false);
 $multiplier = $form->get('multiplier', '');
 
+$wordScore = 0;
+
 // Read the JSON file containing the default scores for letters into an array '$letters'
 $lettersJSON = file_get_contents('data/letters.json');
 $letters = json_decode($lettersJSON, true);
 
+// Process the apps logic if the form was submitted
 if ($form->isSubmitted()) {
     $errors = $form->validate(
         [
@@ -23,7 +27,7 @@ if ($form->isSubmitted()) {
 
     if (!$form->hasErrors) {
         // If a spelling check was requested and the word to check is not blank look the word up
-        if ($spelling && $wordToCheck <> '') {
+        if ($spelling) {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, 'https://od-api.oxforddictionaries.com:443/api/v1/entries/en/' . $wordToCheck);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -37,17 +41,16 @@ if ($form->isSubmitted()) {
             $apiResult = 'Not JSON';
         }
 
+        // Only a properly formed JSON response will get a true value with the isJson function
         $isRealWord = isJson($apiResult);
 
         // Loop over each letter in $wordToCheck and add up its score based on the values in $letters
-        $wordScore = 0;
-
         for ($i = 0; $i < strlen($wordToCheck); $i++) {
             $tempLetter = $wordToCheck[$i];
             $wordScore = $wordScore + $letters[$tempLetter];
         }
 
-// Apply the multiplier and bingo score modification
+        // Apply the double and triple multipliers if selected
         if ($wordToCheck <> '') {
             if ($multiplier <> '') {
                 switch ($multiplier) {
@@ -60,19 +63,10 @@ if ($form->isSubmitted()) {
                 }
             }
 
+            // Apply the bingo score modification if selected
             if ($bingo) {
                 $wordScore = $wordScore + 50;
             }
         }
-
-        $displaySuccess = false;
-        if (($spelling && $isRealWord) || (!$spelling && $wordScore > 0)) {
-            $displaySuccess = true;
-        } else {
-            $displaySuccess = false;
-        }
-    } else {
-        $displaySuccess = false;
-        $wordScore=0;
     }
 }
