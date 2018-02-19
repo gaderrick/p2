@@ -93,9 +93,15 @@ require('scoring.php');
                     </div>
                     <div class='col-sm-6'>
                         <select name='multiplier' id='multiplier'>
-                            <option value='none'>None</option>
-                            <option value='double'>Double Word</option>
-                            <option value='triple'>Triple Word</option>
+                            <option value='none' <?= ($form->prefill("multiplier") == 'none' ? 'selected' : '') ?>>
+                                None
+                            </option>
+                            <option value='double' <?= ($form->prefill("multiplier") == 'double' ? 'selected' : '') ?>>
+                                Double Word
+                            </option>
+                            <option value='triple' <?= ($form->prefill("multiplier") == 'triple' ? 'selected' : '') ?>>
+                                Triple Word
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -104,7 +110,8 @@ require('scoring.php');
                         <label for='bingo'>Bingo! (+50 pts)?</label>
                     </div>
                     <div class='col-sm-6'>
-                        <input type='checkbox' name='bingo' id='bingo'>
+                        <input type='checkbox' name='bingo'
+                               id='bingo' <?= ($form->prefill("bingo") == 'on' ? 'checked' : '') ?>>
                     </div>
                 </div>
                 <div class='row' style='padding-bottom: 15px'>
@@ -112,12 +119,13 @@ require('scoring.php');
                         <label for='spelling'>Check word spelling?</label>
                     </div>
                     <div class='col-sm-6'>
-                        <input type='checkbox' name='spelling' id='spelling'>
+                        <input type='checkbox' name='spelling'
+                               id='spelling' <?= ($form->prefill("spelling") == 'on' ? 'checked' : '') ?>>
                     </div>
                 </div>
                 <div class='row' style='padding-top:25px; padding-bottom: 15px'>
                     <div class='col-sm-12 formText centerContents'>
-                        <input type='submit' value='Score the Word' class='btn'>
+                        <input type='submit' value='Score the Word' class='btn'>&nbsp;&nbsp;
                     </div>
                 </div>
             </form>
