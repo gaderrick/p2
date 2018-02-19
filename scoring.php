@@ -12,6 +12,7 @@ $bingo = ($bingo == 'on' ? true : false);
 $multiplier = $form->get('multiplier', '');
 
 $wordScore = 0;
+$showScoreOptions = 0;
 
 // Read the JSON file containing the default scores for letters into an array '$letters'
 $lettersJSON = file_get_contents('data/letters.json');
@@ -28,6 +29,7 @@ if ($form->isSubmitted()) {
     if (!$form->hasErrors) {
         // If a spelling check was requested and the word to check is not blank look the word up
         if ($spelling) {
+            $showScoreOptions++;
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, 'https://od-api.oxforddictionaries.com:443/api/v1/entries/en/' . $wordToCheck);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -56,9 +58,11 @@ if ($form->isSubmitted()) {
                 switch ($multiplier) {
                     case 'double':
                         $wordScore = $wordScore * 2;
+                        $showScoreOptions++;
                         break;
                     case 'triple':
                         $wordScore = $wordScore * 3;
+                        $showScoreOptions++;
                         break;
                 }
             }
@@ -66,6 +70,7 @@ if ($form->isSubmitted()) {
             // Apply the bingo score modification if selected
             if ($bingo) {
                 $wordScore = $wordScore + 50;
+                $showScoreOptions++;
             }
         }
     }

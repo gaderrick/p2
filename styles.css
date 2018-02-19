@@ -22,9 +22,9 @@ div.formText {
 }
 
 .responsive-image-small {
-    width: 4%;
     height: auto;
-    max-width: 70px;
+    min-width: 30px;
+    max-width: 80px;
 }
 
 .alignRight {

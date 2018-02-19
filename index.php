@@ -35,20 +35,24 @@ require('scoring.php');
                              class='responsive-image-small'>
                     <?php endfor ?>
                     <br>
-                    Scored <?= $wordScore ?> points with the following options:<br><br>
+                    Scored <?= $wordScore ?> points<?= ($showScoreOptions > 0 ? ' with the following options:' : '') ?>
+                    <br><br>
                     <?php if ($multiplier == 'double'): ?>
-                        <img class='img-responsive' src='images/double.png' alt='2x Word Score' id='double'>
+                        <img class='img-responsive' src='images/double.png' alt='2x Word Score' style='max-width: 75px'
+                             id='double'>
                     <?php elseif ($multiplier == 'triple'): ?>
-                        <img class='img-responsive' src='images/triple.png' alt='3x Word Score' id='triple'>
+                        <img class='img-responsive' src='images/triple.png' alt='3x Word Score' style='max-width: 75px'
+                             id='triple'>
                     <?php endif ?>
                     <?php if ($bingo): ?>
                         <img class='img-responsive' src='images/bingo.png'
                              alt='Bingo! (Image adapted from http://www.onlinewebfonts.com/icon starter image)'
+                             style='max-width: 75px'
                              id='bingo'>
                     <?php endif ?>
                     <?php if ($spelling && $isRealWord): ?>
                         <img class='img-responsive' src='images/spell.png' alt='Spell Check (its a real word)'
-                             id='spell'>
+                             style='max-width: 75px' id='spell'>
                     <?php endif ?>
                 </div>
             <?php elseif (($form->hasErrors)): ?>
@@ -78,7 +82,8 @@ require('scoring.php');
                         <label for='userWord'>Word to score:</label>
                     </div>
                     <div class='col-sm-6'>
-                        <input type='text' name='userWord' style='width: 150px' id='userWord' placeholder='(max of 7 letters)'
+                        <input type='text' name='userWord' style='width: 150px' id='userWord'
+                               placeholder='(max of 7 letters)'
                                value='<?= sanitize($form->prefill("userWord")) ?>'>
                     </div>
                 </div>
