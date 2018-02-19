@@ -48,7 +48,7 @@ require('scoring.php');
                         <img class='img-responsive' src='images/bingo.png'
                              alt='Bingo! (Image adapted from http://www.onlinewebfonts.com/icon starter image)'
                              style='max-width: 75px'
-                             id='bingo'>
+                             id='bingoImage'>
                     <?php endif ?>
                     <?php if ($spelling && $isRealWord): ?>
                         <img class='img-responsive' src='images/spell.png' alt='Spell Check (its a real word)'
@@ -59,7 +59,7 @@ require('scoring.php');
                 <div class='col-sm-12 formText messageArea alert alert-danger' style='line-height: 50px'>
                     <?php if ($form->hasErrors) : ?>
                         <?php foreach ($errors as $error) : ?>
-                            <li><?= $error ?></li>
+                            ++ <?= $error ?>
                         <?php endforeach ?>
                     <?php endif ?>
                 </div>
