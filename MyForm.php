@@ -12,7 +12,7 @@ class MyForm extends \DWA\Form
      * @param $parameter
      * @return bool
      */
-    protected function maxlength($value, $parameter)
+    protected function maxLength($value, $parameter)
     {
         return strlen($value) <= $parameter;
     }

@@ -167,7 +167,7 @@ class Form
             'email' => ' is not a valid email address.',
             'min' => ' has to be greater than ' . $parameter . '.',
             'max' => ' has to be less than ' . $parameter . '.',
-            'maxlength' => ' has to be less than '.$parameter.' characters in length.',
+            'maxLength' => ' has to be less than '.$parameter.' characters in length.',
         ];
 
         # If a message for the rule was found, use that, otherwise default to " has an error"

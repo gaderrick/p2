@@ -61,7 +61,7 @@ require('scoring.php');
                 </div>
             <?php else: ?>
                 <div class='col-sm-12 formText messageArea alert alert-danger' style='line-height: 50px'>
-                    Sorry, <?= ($wordToCheck <> '' ? $wordToCheck : 'a blank') ?> is not a valid word<br>
+                    Sorry, <?= sanitize(($wordToCheck <> '' ? $wordToCheck : 'a blank')) ?> is not a valid word<br>
                 </div>
             <?php endif; ?>
         <?php else: ?>
@@ -78,7 +78,7 @@ require('scoring.php');
                         <label for='userWord'>Word to score:</label>
                     </div>
                     <div class='col-sm-6'>
-                        <input type='text' name='userWord' style='width: 100%' id='userWord'
+                        <input type='text' name='userWord' style='width: 150px' id='userWord' placeholder='(max of 7 letters)'
                                value='<?= sanitize($form->prefill("userWord")) ?>'>
                     </div>
                 </div>

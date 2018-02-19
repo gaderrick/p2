@@ -21,7 +21,7 @@ $letters = json_decode($lettersJSON, true);
 if ($form->isSubmitted()) {
     $errors = $form->validate(
         [
-            'userWord' => 'required|alpha|maxlength:7',
+            'userWord' => 'required|alpha|maxLength:7',
         ]
     );
 
